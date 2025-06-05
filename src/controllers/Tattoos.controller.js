@@ -2,7 +2,6 @@ import { getAllTattoosService, getTattoosByIdService, createReservaTattooService
 import { response } from '../Utils/templates/response.template.js';
 
 
-
 export const getAllTattoos = async(req, res, next) => {
     try {
         const poleras = await getAllTattoosService();
@@ -31,9 +30,10 @@ export const getTattoosById = async(req, res, next) => {
 
 export const createReservaTattoo = async(req, res, next) => {
     try {
-        const newReservaData = req.body;
-        console.log('Datos recibidos en el controlador (req.body):', newReservaData);
-        const reservas = await createReservaTattooService(newReservaData);
+        const newReservaTattooData = req.body;
+        console.log('Datos recibidos en el controlador (req.body):', newReservaTattooData);
+        const reservas = await createReservaTattooService(newReservaTattooData);
+        console.log('Documento creado por el servicio (en controlador):', reservas); // <-- Asegúrate de que usas la variable que recibe el await
         response(res, reservas, 201, 'Reserva creada con éxito');
     } catch (error) {
         next(error);
