@@ -31,5 +31,5 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || envs.port;
 
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo de pana en el puerto ${envs.port} 👻`) 
+    console.log(`Servidor corriendo de pana en el puerto ${PORT} 👻`) 
 });
