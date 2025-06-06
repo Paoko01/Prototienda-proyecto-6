@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
   res.send('¡Hola desde el backend de tu Tienda de proyecto 6! El servidor está funcionando.');
 });
 
-const PORT = process.env.PORT || envs.port || 3000;
+const PORT = process.env.PORT || envs.port;
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo de pana en el puerto ${envs.port} 👻`) 
