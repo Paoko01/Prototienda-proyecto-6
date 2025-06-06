@@ -30,6 +30,6 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || envs.port || 3000;
 
-app.listen(envs.port, () => {
+app.listen(PORT, () => {
     console.log(`Servidor corriendo de pana en el puerto ${envs.port} 👻`) 
 });
