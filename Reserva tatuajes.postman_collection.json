@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "361b24bf-cd79-40ff-a859-183aa09f388f",
+		"name": "Reserva tatuajes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45181466",
+		"_collection_link": "https://paoko-3699751.postman.co/workspace/Paoko's-Workspace~7d713f13-09e5-4169-89ae-27868bfc1751/collection/45181466-361b24bf-cd79-40ff-a859-183aa09f388f?action=share&source=collection_link&creator=45181466"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Crear resrva",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Crear usuario",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

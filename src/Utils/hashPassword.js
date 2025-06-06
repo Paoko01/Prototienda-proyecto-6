@@ -17,6 +17,8 @@ export const hashPassword = async(password) => {
 
 export const comparePassword = async(plainPassword, hashedPassword) => {
     try {
+        console.log('Plain password received:', plainPassword); // Lo que se envía del login
+        console.log('Hashed password from DB:', hashedPassword); // Lo que se obtiene de la DB
         return await bcrypt.compare(plainPassword, hashedPassword);
     } catch (error) {
         throw new AuthError('Error al intentar comparar la contraseña', 500, error);

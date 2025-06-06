@@ -42,17 +42,17 @@ export const registerService = async({
 
 
 //SH256 -> SMAC-SSH
+export const loginService = async ({ correo, password }) => {
+    try {
+        const user = await Usuario.findOne({ correo });
 
-export const loginService = async({ correo, password }) => {
-    try {    
-        const user = await Usuario.findOne({ correo }); 
-        
-        const passwordMatch = await comparePassword(password, user.password);
-
-        if(!user || !passwordMatch) {
+        // Si el usuario no existe, o la contraseña no coincide, lanzamos el error 401 directamente
+        // Es importante hacer la comparación solo si el usuario existe para evitar errores de user.password
+        if (!user || !(await comparePassword(password, user.password))) {
             throw new AuthError('Credenciales incorrectas', 401);
         }
 
+        // Si todo es correcto, generamos el token
         const token = jwt.sign({
             uid: user._id,
             nombre: user.nombre,
@@ -62,8 +62,19 @@ export const loginService = async({ correo, password }) => {
             expiresIn: jwtExpiration
         });
 
-        return [ user, token];
+        // Devolvemos el usuario y el token
+        return [user, token];
+
     } catch (error) {
+        // Si el error ya es una instancia de AuthError (como 'Credenciales incorrectas'),
+        // lo relanzamos directamente para mantener el statusCode original.
+        if (error instanceof AuthError) {
+            throw error;
+        }
+
+        // Para cualquier otro error inesperado (ej. error de DB, problema con jwt.sign/verify),
+        // lanzamos un error 500 general.
+        console.error('Error inesperado en loginService:', error); // Loggear el error original
         throw new AuthError('Error al intentar iniciar sesión', 500, error);
     }
 };
